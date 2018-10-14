@@ -13,7 +13,7 @@ import Util.Util;
  */
 public class InsertionSort {
 
-    public static int[] sort(int[] in) {
+    public static void sort(int[] in) {
 
         for (int i = 1; i < in.length; i++) {
             int key = in[i];
@@ -25,16 +25,14 @@ public class InsertionSort {
             }
             in[j + 1] = key;
         }
-        return in;
     }
 
     public static void main(String[] args) {
         int in[] = {31, 41, 59, 26, 41, 58};
 
         Util.printArray(in);
-        int out[] = InsertionSort.sort(in);
-        Util.printArray(out);
-        
+        InsertionSort.sort(in);
+        Util.printArray(in);
 
     }
 }
