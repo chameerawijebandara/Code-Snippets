@@ -31,7 +31,7 @@ public class InsertionSort {
         int in[] = {31, 41, 59, 26, 41, 58};
 
         Util.printArray(in);
-        InsertionSort.sort(in);
+        sort(in);
         Util.printArray(in);
 
     }
