@@ -5,7 +5,6 @@
  */
 package Sort;
 
-import static Sort.MergeSort.sort;
 import Util.Util;
 
 /**
