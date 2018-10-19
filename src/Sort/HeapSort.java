@@ -64,9 +64,47 @@ public class HeapSort {
             in[0] = temp;
 
             heapSize--;
-            
+
             maxHeapify(in, 0);
         }
+    }
+
+    private static int heapMaximum(int in[]) {
+        if (in.length > 1) {
+            return in[0];
+        }
+        return Integer.MIN_VALUE;
+    }
+
+    private static boolean heapIncreasekey(int in[], int i, int key) {
+        if (key < in[i]) {
+            return false;
+        }
+        in[i] = key;
+        while (i > 0 && in[patent(i)] < in[i]) {
+            int temp = in[i];
+            in[i] = in[patent(i)];
+            in[patent(i)] = temp;
+
+            i = patent(i);
+        }
+        return true;
+    }
+
+    public static int heapExtractMax(int in[]) {
+        if (heapSize < 1) {
+            return Integer.MIN_VALUE;
+        }
+        int max = in[0];
+
+        int temp = in[heapSize - 1];
+        in[heapSize - 1] = in[0];
+        in[0] = temp;
+
+        heapSize--;
+        maxHeapify(in, 0);
+
+        return max;
     }
 
     public static void main(String[] args) {
@@ -76,6 +114,14 @@ public class HeapSort {
         buildMaxHeap(in);
         Util.printArray(in);
         sort(in);
+        Util.printArray(in);
+
+        buildMaxHeap(in);
+        System.out.println(heapExtractMax(in));
+        
+        buildMaxHeap(in);
+        Util.printArray(in);
+        heapIncreasekey(in, 2, 1000);
         Util.printArray(in);
     }
 }
