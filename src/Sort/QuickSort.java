@@ -41,8 +41,8 @@ public class QuickSort {
 
     }
 
-    private static int randomizedPArtition(int in[], int p, int r) {
-        int i = (int) (Math.random() * (r - p - 1));
+    private static int randomizedPartition(int in[], int p, int r) {
+        int i = p + (int) (Math.random() * (r - p - 1));
         int temp = in[i];
         in[i] = in[r - 1];
         in[r - 1] = temp;
@@ -52,7 +52,7 @@ public class QuickSort {
 
     private static void randomizedQuickSort(int in[], int p, int r) {
         if (p < r) {
-            int q = randomizedPArtition(in, p, r);
+            int q = randomizedPartition(in, p, r);
             randomizedQuickSort(in, p, q);
             randomizedQuickSort(in, q + 1, r);
         }
@@ -63,7 +63,7 @@ public class QuickSort {
     }
 
     public static void randomizedSort(int in[]) {
-        quickSort(in, 0, in.length);
+        randomizedQuickSort(in, 0, in.length);
     }
 
     public static void main(String[] args) {
