@@ -63,6 +63,33 @@ public class GraphSearchAdjacency {
         }
     }
 
+    public void DFS(int start) {
+        for (int i = 0; i < data.length; i++) {
+            state[i] = -1;
+            d[i] = Integer.MAX_VALUE;
+            pi[i] = -1;
+        }
+
+        state[start] = 0;
+        d[start] = 0;
+
+        ArrayList<Integer> Q = new ArrayList<Integer>();
+        Q.add(start);
+        while (!Q.isEmpty()) {
+            int temp = Q.remove(Q.size() - 1);
+            for (int i = 0; i < data[temp].size(); i++) {
+                int next = data[temp].get(i);
+                if (state[next] == -1) {
+                    state[next] = 0;
+                    d[next] = d[temp] + 1;
+                    pi[next] = temp;
+                    Q.add(next);
+                }
+            }
+            state[temp] = 1;
+        }
+    }
+
     private void printPathTo(int goal) {
 
         int i = goal;
@@ -85,6 +112,12 @@ public class GraphSearchAdjacency {
         GS.addEdge(5, 4);
         GS.addEdge(6, 6);
 
+        System.out.println("BFS");
+        GS.BFS(1);
+        GS.printPathTo(5);
+        GS.printPathTo(6);
+
+        System.out.println("DFS");
         GS.BFS(1);
         GS.printPathTo(5);
         GS.printPathTo(6);
