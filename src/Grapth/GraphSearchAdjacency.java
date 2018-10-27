@@ -74,18 +74,6 @@ public class GraphSearchAdjacency {
     }
 
     public static void main(String[] args) {
-
-        int data[][] = new int[7][7];
-
-        data[1][2] = 1;
-        data[1][4] = 1;
-        data[2][5] = 1;
-        data[3][5] = 1;
-        data[3][6] = 1;
-        data[4][2] = 1;
-        data[5][4] = 1;
-        data[6][6] = 1;
-
         GraphSearchAdjacency GS = new GraphSearchAdjacency(7);
 
         GS.addEdge(1, 2);
@@ -100,6 +88,5 @@ public class GraphSearchAdjacency {
         GS.BFS(1);
         GS.printPathTo(5);
         GS.printPathTo(6);
-
     }
 }
