@@ -209,9 +209,9 @@ public class UniformCostSearch_8Puzzle {
 
         while (node != null) {
 
-            for (int i = 0; i < node.state.data.length; i++) {
-                for (int j = 0; j < node.state.data[i].length; j++) {
-                    System.out.print(node.state.data[i][j] + " ");
+            for (int[] data : node.state.data) {
+                for (int j = 0; j < data.length; j++) {
+                    System.out.print(data[j] + " ");
                 }
                 System.out.println("");
             }
