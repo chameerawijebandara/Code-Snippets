@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AI.Search;
+package AI.Search.UninformedSearch;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Chameera
  */
-public class DepthFirstSearch_8Puzzle {
+public class DepthLimitedSearch_8Puzzle {
 
     private static class State {
 
@@ -57,7 +57,7 @@ public class DepthFirstSearch_8Puzzle {
     private ArrayList<Node> frontier;
     private ArrayList<Node> explored;
 
-    public DepthFirstSearch_8Puzzle(State goal) {
+    public DepthLimitedSearch_8Puzzle(State goal) {
         this.goal = goal;
 
         this.frontier = new ArrayList<Node>();
@@ -178,15 +178,15 @@ public class DepthFirstSearch_8Puzzle {
         State init = new State(3);
         State goal = new State(3);
 
-        init.data[0][0] = 7;
+        init.data[0][0] = 1;
         init.data[0][1] = 2;
-        init.data[0][2] = 4;
-        init.data[1][0] = 5;
-        init.data[1][1] = 0;
+        init.data[0][2] = 3;
+        init.data[1][0] = 0;
+        init.data[1][1] = 5;
         init.data[1][2] = 6;
-        init.data[2][0] = 8;
-        init.data[2][1] = 3;
-        init.data[2][2] = 1;
+        init.data[2][0] = 4;
+        init.data[2][1] = 7;
+        init.data[2][2] = 8;
 
         goal.data[0][0] = 1;
         goal.data[0][1] = 2;
@@ -199,12 +199,12 @@ public class DepthFirstSearch_8Puzzle {
         goal.data[2][2] = 0;
 
         init.i = 1;
-        init.j = 1;
+        init.j = 0;
 
         goal.i = 2;
         goal.j = 2;
 
-        DepthFirstSearch_8Puzzle bfs = new DepthFirstSearch_8Puzzle(goal);
+        DepthLimitedSearch_8Puzzle bfs = new DepthLimitedSearch_8Puzzle(goal);
         Node node = bfs.search(init);
 
         while (node != null) {
